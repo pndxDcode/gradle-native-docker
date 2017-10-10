@@ -7,7 +7,17 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tab Stack OverFlow"
+        android:textAllCaps="true"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:id="@+id/titletabSOF"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listSOF"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Tab Stack OverFlow"/>
+        android:layout_below="@+id/titletabSOF"/>
 
 </RelativeLayout>
