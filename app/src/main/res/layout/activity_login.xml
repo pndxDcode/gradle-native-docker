@@ -18,6 +18,7 @@
             android:src="@mipmap/refactory"
             android:layout_width="242dp"
             android:layout_height="152dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="14dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.25" />
@@ -47,14 +48,6 @@
             android:background="@color/btnLogin"
             android:textColor="#ffffff"
             android:padding="12dp"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="No account yet? no login"
-            android:gravity="center"
-            android:textSize="16dip"/>
 
     </LinearLayout>
 </ScrollView>
