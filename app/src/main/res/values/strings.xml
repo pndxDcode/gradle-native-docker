@@ -4,4 +4,5 @@
     <string name="platform">Immersive Platform</string>
     <string name="textHomeLogin">To continue, you must have a Github account</string>
     <string name="dialogfragment">Open DialogFragment</string>
+    <string name="title_activity_hapus">Hapus</string>
 </resources>
