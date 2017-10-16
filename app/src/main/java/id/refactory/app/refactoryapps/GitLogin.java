@@ -33,7 +33,6 @@ public class GitLogin extends AppCompatActivity {
     String url = api.getUri();
 
     SessionManager session;
-    Context context;
 
 
     @Override
@@ -146,12 +145,6 @@ public class GitLogin extends AppCompatActivity {
                 Integer expiresToken = authRequest.body().getExpiresIn();
                 String refreshToken = authRequest.body().getRefreshToken();
                 String tokenType = authRequest.body().getTokenType();
-
-                Log.d("yeh", "onResponse: "+accessToken);
-                Log.d("yeh", "onResponse: "+expiresToken);
-                Log.d("yeh", "onResponse: "+refreshToken);
-                Log.d("yeh", "onResponse: "+tokenType);
-
 
                 session.createLogin(accessToken,expiresToken,refreshToken,tokenType);
 
