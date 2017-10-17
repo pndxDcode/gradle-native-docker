@@ -27,12 +27,13 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_status, tv_link ;
+        private TextView tv_status,tv_assignment, tv_link;
         private Button bt_report;
 
         public ViewHolder(View view) {
             super(view);
             tv_status = (TextView)view.findViewById(R.id.status);
+            tv_assignment = (TextView)view.findViewById(R.id.assignment);
             tv_link = (TextView)view.findViewById(R.id.link);
             bt_report = (Button) view.findViewById(R.id.bt_report);
         }
@@ -44,19 +45,35 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
         this.rappModArrayList = rappModArrayList;
     }
 
+    //Ref : http://www.glamvian.com/Lebih-dalam-tentang-RecyclerView/
+    //onCreateViewHolder yang dipanggil ketika RecyclerView menginstanisasi intance ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.assignment_listview, viewGroup, false);
         return new ViewHolder(view);
     }
 
+    //onBindViewHolder method ini dipanggil ketika RecyclerView ingin mengisi view dengan data
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.tv_status.setText(rappModArrayList.get(0).getStatus());
-        viewHolder.tv_link.setText(rappModArrayList.get(0).getUrl());
+    public void onBindViewHolder(ViewHolder viewHolder4, int i) {
+       viewHolder4.tv_status.setText(rappModArrayList.get(12).getStatus());
+        viewHolder4.tv_assignment.setText(rappModArrayList.get(12).getAssignmentType()+" :");
+       viewHolder4.tv_link.setText(""+ rappModArrayList.get(12).getUrl());
+
+        // viewHolder.tv_status.setText(rappModArrayList.get(0).getStatus());
+      //  viewHolder.tv_link.setText(rappModArrayList.get(0).getUrl())
     }
 
 
+// Contoh code seblumnya
+//    public void onBindViewHolder3(ViewHolder viewHolder, int i) {
+//        viewHolder.tv_status.setText(rappModArrayList.get(i).getStatus());
+//        viewHolder.tv_link.setText(""+ rappModArrayList.get(i).getTitle());
+//    }
+
+
+
+    //getItemCount yang return jumlah dari item ke dalam data source
     @Override
     public int getItemCount() {
         return rappModArrayList.size();
