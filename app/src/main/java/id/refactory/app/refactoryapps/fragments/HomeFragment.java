@@ -44,21 +44,27 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-
+        // Set Layout fragment, Ngaruh untuk menampilakan di layout2 fragment xml
         final View view =inflater.inflate(R.layout.fragment_home, container, false);
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.listProject);
 
-        // Set layout
+        // untuk set data recyclerview listProject yang ada di file fragment_home
+        final RecyclerView recyclerView = view.findViewById(R.id.listProject);
 
+        //Ref : http://www.glamvian.com/Lebih-dalam-tentang-RecyclerView/
+        // LayoutManager yang menentukan colletion item ditampilkan dan LayoutManager menjadi bagian terpenting-
+        // cara mendaur ulang bekerja di RecyclerView karena LayoutManager yang menentukan kapan mendaur ulang-
+        // tampilan item yang tidak lagi terlihat saat pengguna menggulirkan layar
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
+        // connection api menggunakan Retrofit
+
         RappClient apiService = RetrofitConnect.getClient().create(RappClient.class);
 
-
+        // set token dari API
         Call<RappMod> rappModCall = apiService.listData("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY1MmRjMDI3YWE3NmU0OTM1YzNmMTBmZmJkYjYwZjkxODc5ZGQ3ZGZlOWNhMzIxYWFjZmEyMWU5YzE2YTkzNGJmZjljYzM0YTJiODFhOTUyIn0.eyJhdWQiOiIzIiwianRpIjoiNjUyZGMwMjdhYTc2ZTQ5MzVjM2YxMGZmYmRiNjBmOTE4NzlkZDdkZmU5Y2EzMjFhYWNmYTIxZTljMTZhOTM0YmZmOWNjMzRhMmI4MWE5NTIiLCJpYXQiOjE1MDYzMTQ0MDIsIm5iZiI6MTUwNjMxNDQwMiwiZXhwIjoxNTM3ODUwNDAyLCJzdWIiOiIxNjIiLCJzY29wZXMiOltdfQ.L4FSVO6EstmMEctxdFEsDJ9Lkjiu9s7TrNXIrn52uTONYqbMb5KYxSlLk3J1bbfxcdZTD_KMei2Nx2tFBCQNQ9PAkYjd8dWN1eLlVeyChYuJLoA6NMWkJECxip2m_HlyWIJXe8yDSMsCkbuSCb1va4gNSJpvl7Kn0rhi9d-qz9u1v7f-uDkool9maNjLvCAnHqDSSYZJhthe8oD0ooH1AcQ1VqkNcuC_Cg1KZiyO020BnpgA_k0fLw3hVLB8BAHx4eW2yWQybSsu9EJIqoC8-Ix3LdLtBBlMSv75pfAxhjrU61IFbhMxwFB7WlK9di569C8EaE-cewJYMW64naMFUqv0osRHvgPpasGFck6G1JkPNgwcKXRMVS_WquRUYbskAsnAR9xVjVknbu91EEC3DtU_-b5lkUHvmw9uiq7oagR4KflPDFGC9Mcc11WWuLI6lHqXk4UJjVD2bltQxlZxAotD0hUU0t47Gtl8PpiYNd4qnktcUyN4eUAHewPK9XIvJXPlsJQeEtZ64r0UTyl-x_FWEnrzaEhFbfdvvAsXbjb4yXynfFq9AizmvM3DKdSAtjdib6Ai6bymyfenr06aeFxRmKLneCImqP25-ED0tpex_rwTTzhv1i2ZrXJ4gWEYlQQBwPc8FPJTk2L1AqkMHcOMIreRaKQw7YgpIIr_qCk");
+
+        //untuk menampilakan data dari API
 
         rappModCall.enqueue(new Callback<RappMod>() {
             @Override
@@ -77,13 +83,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<RappMod> call, Throwable t) {
                 Log.d("Error",t.getMessage());
-
-
             }
         });
-               // Inflate the layout for this fragment
+
+
+        // Inflate the layout for this fragment, setting atau return untuk ke layout fragment_home
+        // return inflater.inflate(R.layout.fragment_hr, container, false); (kode sebelum diganti "return view;" )
         return view;
-            }
+
+    }
 
 
     public interface OnFragmentInteractionListener {
