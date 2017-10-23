@@ -1,6 +1,8 @@
 
 package id.refactory.app.refactoryapps.api.models;
 
+import android.util.Log;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
