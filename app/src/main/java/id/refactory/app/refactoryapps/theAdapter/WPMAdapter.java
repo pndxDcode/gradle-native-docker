@@ -50,10 +50,12 @@ public class WPMAdapter extends RecyclerView.Adapter<WPMAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(WPMAdapter.ViewHolder v0, int position) {
-        v0.tv_status.setText(rappModAL.get(0).getStatus());
-        v0.tv_assignmnet.setText(rappModAL.get(0).getAssignmentType()+" :");
-        v0.tv_link.setText(""+ rappModAL.get(0).getUrl());
+    public void onBindViewHolder(WPMAdapter.ViewHolder v0, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("WPM")) {
+            v0.tv_status.setText(rappModAL.get(i).getStatus());
+            v0.tv_assignmnet.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v0.tv_link.setText("" + rappModAL.get(i).getUrl());
+        }
     }
 
     @Override
