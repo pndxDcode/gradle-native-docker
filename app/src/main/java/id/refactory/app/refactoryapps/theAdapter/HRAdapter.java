@@ -54,10 +54,12 @@ public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder v2, int position) {
-        v2.tv_status.setText(rappModAL.get(2).getStatus());
-        v2.tv_assignment.setText(rappModAL.get(2).getAssignmentType() + " :");
-        v2.tv_link.setText(""+ rappModAL.get(2).getUrl());
+    public void onBindViewHolder(ViewHolder v2, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("Hacker Rank")) {
+            v2.tv_status.setText(rappModAL.get(i).getStatus());
+            v2.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v2.tv_link.setText("" + rappModAL.get(i).getUrl());
+                }
     }
 
     @Override
