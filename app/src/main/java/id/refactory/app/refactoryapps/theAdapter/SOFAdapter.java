@@ -55,10 +55,12 @@ public class SOFAdapter extends RecyclerView.Adapter<SOFAdapter.ViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(SOFAdapter.ViewHolder v3, int position) {
-        v3.tv_status.setText(rappModAL.get(3).getStatus());
-        v3.tv_assignment.setText(rappModAL.get(3).getAssignmentType()+" :");
-        v3.tv_link.setText(""+ rappModAL.get(3).getUrl());
+    public void onBindViewHolder(SOFAdapter.ViewHolder v3, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("Stackoverflow")) {
+            v3.tv_status.setText(rappModAL.get(i).getStatus());
+            v3.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v3.tv_link.setText("" + rappModAL.get(i).getUrl());
+        }
     }
 
     @Override
