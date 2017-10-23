@@ -4,13 +4,17 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.Datum;
@@ -24,6 +28,7 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 
     public Context context;
     public ArrayList<Datum> rappModArrayList;
+    public ArrayList<RappMod> dataAssignments;
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -47,6 +52,7 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 
     //Ref : http://www.glamvian.com/Lebih-dalam-tentang-RecyclerView/
     //onCreateViewHolder yang dipanggil ketika RecyclerView menginstanisasi intance ViewHolder
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.assignment_listview, viewGroup, false);
@@ -54,14 +60,27 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
     }
 
     //onBindViewHolder method ini dipanggil ketika RecyclerView ingin mengisi view dengan data
+
+    int a ;
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder4, int i) {
-       viewHolder4.tv_status.setText(rappModArrayList.get(12).getStatus());
-        viewHolder4.tv_assignment.setText(rappModArrayList.get(12).getAssignmentType()+" :");
-       viewHolder4.tv_link.setText(""+ rappModArrayList.get(12).getUrl());
+    public void onBindViewHolder(ViewHolder viewHolder4, int i ) {
+
+                if (rappModArrayList.get(i).getAssignmentType().toUpperCase().equals("PROJECT"))
+             //   a = rappModArrayList.size();
+                {
+                    Log.d("CUk", "onBindViewHolder: " + rappModArrayList.get(i).getUrl());
+                    viewHolder4.tv_status.setText(rappModArrayList.get(i).getStatus());
+                    viewHolder4.tv_assignment.setText(rappModArrayList.get(i).getAssignmentType() + " :");
+                    viewHolder4.tv_link.setText("" + rappModArrayList.get(i).getUrl());
+                }
+        //Log.e("", "onBindViewHolder: "+ a );
+
+        //12 dan 20 urutan array untuk "project"
+        //seharusnya menampilakan berdasarkan filter id_assignment/type_assignment dan array loop bedasarkan id_assignment/type_assignment
 
         // viewHolder.tv_status.setText(rappModArrayList.get(0).getStatus());
       //  viewHolder.tv_link.setText(rappModArrayList.get(0).getUrl())
+
     }
 
 
@@ -72,10 +91,10 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 //    }
 
 
-
     //getItemCount yang return jumlah dari item ke dalam data source
     @Override
     public int getItemCount() {
-        return rappModArrayList.size();
+//        ArrayList<Datum> filteredRappMod = new ArrayList<>();
+        return this.rappModArrayList.size();
     }
 }
