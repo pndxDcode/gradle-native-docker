@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffab40</color>
     <color name="tabcolor">#ffffff</color>
+    <color name="btnLogin">#3c3c3c</color>
 </resources>
