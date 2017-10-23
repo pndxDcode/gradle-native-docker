@@ -57,10 +57,12 @@ public class OSAdapter extends RecyclerView.Adapter<OSAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(OSAdapter.ViewHolder v4, int position) {
-        v4.tv_status.setText(rappModAL.get(4).getStatus());
-        v4.tv_assignment.setText(rappModAL.get(4).getAssignmentType()+" :");
-        v4.tv_link.setText(""+ rappModAL.get(4).getUrl());
+    public void onBindViewHolder(OSAdapter.ViewHolder v4, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("Opensource")) {
+            v4.tv_status.setText(rappModAL.get(i).getStatus());
+            v4.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v4.tv_link.setText("" + rappModAL.get(i).getUrl());
+        }
     }
 
     @Override
