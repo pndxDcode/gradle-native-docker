@@ -4,10 +4,10 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 
 /**
- * Created by prana on 18/10/17.
+ * Created by massam on 14/10/17.
  */
 
-public class LoadListener {
+public class LoadListener{
     @JavascriptInterface
     public void processHTML(String html){
         Log.e("Result HTML", html);

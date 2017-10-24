@@ -12,9 +12,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-import id.refactory.app.refactoryapps.api.services.ApiClient;
-import id.refactory.app.refactoryapps.api.services.AuthRequest;
-import id.refactory.app.refactoryapps.api.services.RegAPI;
+import id.refactory.app.refactoryapps.services.ApiClient;
+import id.refactory.app.refactoryapps.services.AuthRequest;
+import id.refactory.app.refactoryapps.services.RegAPI;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,6 +61,7 @@ public class GitLogin extends AppCompatActivity {
 
         loginView.setWebViewClient(new WebViewClient(){
 
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, String Url) {
 
                 if(Url.contains("https://app.refactory.id/callback?code=")) {
@@ -102,6 +104,7 @@ public class GitLogin extends AppCompatActivity {
 
         getToken(Code);
     }
+
     public void getToken(String codeGet){
 
         ApiClient get = new ApiClient();
@@ -150,11 +153,11 @@ public class GitLogin extends AppCompatActivity {
                 Log.d("Message", "onFailure: " + t.getMessage());
             }
 
-            });
+        });
 
     }
 
-    // ??????????????????????????????? dipakai dimana ???
+    // dipakai dimana ?
     public void onBackPressPed() {
         if (loginView.canGoBack()){
             loginView.goBack();
@@ -163,5 +166,5 @@ public class GitLogin extends AppCompatActivity {
         }
     }
 
-
 }
+

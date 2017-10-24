@@ -1,15 +1,10 @@
 package id.refactory.app.refactoryapps;
 
-
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -71,23 +66,6 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
             }
         });
 
-
-//        TextView token = (TextView) findViewById(R.id.DataToken);
-//        Button btnLogout = (Button) findViewById(R.id.logout);
-
-        //Prana Nambah untuk concat bearer
- //       berer = "Bearer " +tok ;
-        //token.setText(tok);
-//        Log.e("uu", berer );
-
-            // button logout
-//        btnLogout.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View arg0){
-//                session.logout();
-//            }
-//        });
-
     }
 
     public String GetToken() {
@@ -104,9 +82,6 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
         Log.e("uu", berer );
         return berer;
 
-
     }
-
-
 
 }

@@ -8,7 +8,8 @@ import android.util.Log;
 import java.util.HashMap;
 
 /**
- * Created by prana on 18/10/17.
+ * Created by massam on 16/10/17.
+ * Tweak by prana on 18/10/17.
  */
 
 public class SessionManager {
@@ -60,10 +61,11 @@ public class SessionManager {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         }
-
     }
 
     public boolean loggedIn() {
         return pref.getBoolean("login", false);
     }
 }
+
+

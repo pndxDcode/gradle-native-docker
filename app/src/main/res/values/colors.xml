@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#bdbdbd</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffab40</color>
     <color name="tabcolor">#ffffff</color>
+
+    <color name="background">#f5f5f5</color>
+    <color name="text">#F5F5F5</color>
     <color name="btnLogin">#3c3c3c</color>
+    <color name="textColor">#000000</color>
+
 </resources>
