@@ -7,7 +7,17 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tab OpenSource"
+        android:textAllCaps="true"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:id="@+id/titletabOS"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listOS"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Tab OpenSource"/>
+        android:layout_below="@+id/titletabOS"/>
 
 </RelativeLayout>

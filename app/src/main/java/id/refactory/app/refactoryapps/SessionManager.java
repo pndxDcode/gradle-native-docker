@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 /**
  * Created by massam on 16/10/17.
+ * Tweak by prana on 18/10/17.
  */
 
 public class SessionManager {
@@ -21,29 +22,29 @@ public class SessionManager {
     public static final String REFRESH = "Refresh Token";
     public static final String TOKEN_TYPE = "Token Type";
 
-    public SessionManager(Context context){
+    public SessionManager(Context context) {
         this.context = context;
-        pref = context.getSharedPreferences(MY_PREFS_NAME,0);
+        pref = context.getSharedPreferences(MY_PREFS_NAME, 0);
         editor = pref.edit();
     }
 
-    public void createLogin(String token, Integer expireIn, String refreshToken, String typeToken){
-        Log.d("yeh", "onResponse: "+token);
-        editor.putBoolean("login",true);
-        editor.putString(KEY_NAME,token);
+    public void createLogin(String token, Integer expireIn, String refreshToken, String typeToken) {
+        Log.d("yeh", "onResponse: " + token);
+        editor.putBoolean("login", true);
+        editor.putString(KEY_NAME, token);
         editor.putInt(EXPIRED, expireIn);
-        editor.putString(REFRESH,refreshToken);
-        editor.putString(TOKEN_TYPE,typeToken);
+        editor.putString(REFRESH, refreshToken);
+        editor.putString(TOKEN_TYPE, typeToken);
         editor.commit();
     }
 
-    public HashMap<String, String> getTokenDetails(){
+    public HashMap<String, String> getTokenDetails() {
         HashMap<String, String> token = new HashMap<String, String>();
-        token.put(KEY_NAME,pref.getString(KEY_NAME, null));
+        token.put(KEY_NAME, pref.getString(KEY_NAME, null));
         return token;
     }
 
-    public void logout(){
+    public void logout() {
         editor.clear();
         editor.commit();
 
@@ -53,8 +54,8 @@ public class SessionManager {
         context.startActivity(i);
     }
 
-    public void checkLogin(){
-        if(!this.loggedIn()){
+    public void checkLogin() {
+        if (!this.loggedIn()) {
             Intent i = new Intent(context, GitLogin.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -62,7 +63,9 @@ public class SessionManager {
         }
     }
 
-    public boolean loggedIn(){
+    public boolean loggedIn() {
         return pref.getBoolean("login", false);
     }
 }
+
+

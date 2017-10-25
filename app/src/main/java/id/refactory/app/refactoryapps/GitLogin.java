@@ -1,7 +1,6 @@
 package id.refactory.app.refactoryapps;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +15,7 @@ import android.widget.Button;
 import id.refactory.app.refactoryapps.services.ApiClient;
 import id.refactory.app.refactoryapps.services.AuthRequest;
 import id.refactory.app.refactoryapps.services.RegAPI;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,6 +23,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GitLogin extends AppCompatActivity {
+
     private Dialog MyDialog;
     private Button webDialog;
     private WebView loginView;
@@ -33,7 +34,6 @@ public class GitLogin extends AppCompatActivity {
     String url = api.getUri();
 
     SessionManager session;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +49,7 @@ public class GitLogin extends AppCompatActivity {
                 dialogWebview();
             }
         });
-
-
     }
-
 
     public void dialogWebview(){
         loginView = new WebView(this);
@@ -63,6 +60,7 @@ public class GitLogin extends AppCompatActivity {
         loginView.addJavascriptInterface(this.loadlistener,"HTMLOUT");
 
         loginView.setWebViewClient(new WebViewClient(){
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String Url) {
 
@@ -98,7 +96,6 @@ public class GitLogin extends AppCompatActivity {
 
     }
 
-
     public void gitCode(String code){
         Log.d("gitcode", code);
         String currentString = code;
@@ -120,7 +117,6 @@ public class GitLogin extends AppCompatActivity {
         String client_secret = apiClient.getClientSecret();
         final String redirect_uri = apiClient.redirectUri();
 
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -129,7 +125,7 @@ public class GitLogin extends AppCompatActivity {
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
         RegAPI api = retrofit.create(RegAPI.class);
-
+    // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
         call.enqueue(new Callback<AuthRequest>() {
@@ -146,11 +142,10 @@ public class GitLogin extends AppCompatActivity {
 
                 MyDialog.dismiss();
 
+                // Intent Untuk masuk ke dashboard setalah login via github
                 Intent i = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(i);
                 finish();
-
-                //Log.e("", "response 33: "+new Gson().toJson(authRequest.body()) );
             }
 
             @Override
@@ -159,8 +154,10 @@ public class GitLogin extends AppCompatActivity {
             }
 
         });
+
     }
 
+    // dipakai dimana ?
     public void onBackPressPed() {
         if (loginView.canGoBack()){
             loginView.goBack();
@@ -169,5 +166,5 @@ public class GitLogin extends AppCompatActivity {
         }
     }
 
-
 }
+

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.refactory.app.refactoryapps.GitLogin"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -43,11 +46,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:text="@string/action_sign_in"
+            android:text="Cotinue With Github"
+            android:autoSizeTextType="uniform"
             android:layout_gravity="center"
             android:background="@color/btnLogin"
             android:textColor="#ffffff"
             android:padding="12dp"/>
 
     </LinearLayout>
+
 </ScrollView>
+
