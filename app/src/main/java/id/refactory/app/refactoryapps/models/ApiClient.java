@@ -1,7 +1,7 @@
-package id.refactory.app.refactoryapps.api.services;
+package id.refactory.app.refactoryapps.models;
 
 /**
- * Created by prana on 18/10/17.
+ * Created by massam on 14/10/17.
  */
 
 public class ApiClient {
@@ -16,7 +16,6 @@ public class ApiClient {
     public void setCode(String newCode){
         code = newCode;
     }
-
     public String getCode(){
         return code;
     }
@@ -45,5 +44,5 @@ public class ApiClient {
         return uri;
     }
 
-
 }
+

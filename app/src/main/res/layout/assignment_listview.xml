@@ -11,7 +11,7 @@
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/cardview_shadow_end_color"
         app:cardCornerRadius="5dp"
-        android:background="@color/tabcolor">
+        android:background="@color/colorPrimary">
 
         <RelativeLayout
             android:layout_width="wrap_content"
