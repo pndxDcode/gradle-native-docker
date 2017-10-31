@@ -24,7 +24,6 @@ public interface RetrofitAssignment {
     @GET("/assignments")
     Call<ResultAssignments> listData (@Header("authorization") String token);
 
-    //@Part("result_value") RequestBody value, @Part("result_attachments\"; filename=\"pp.png\"") RequestBody attachment
     @POST("/assignments/{id}")
     Call<UpdateAssignments> updateData (@Header("Content-Type") String contentType, @Header("authorization") String token, @Path("id") Integer id, @Body MultipartBody body);
 
