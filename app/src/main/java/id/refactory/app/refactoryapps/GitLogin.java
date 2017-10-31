@@ -16,6 +16,7 @@ import id.refactory.app.refactoryapps.services.ApiClient;
 import id.refactory.app.refactoryapps.services.AuthRequest;
 import id.refactory.app.refactoryapps.services.RegAPI;
 
+import id.refactory.app.refactoryapps.ui.activity.Assignments;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -143,7 +144,10 @@ public class GitLogin extends AppCompatActivity {
                 MyDialog.dismiss();
 
                 // Intent Untuk masuk ke dashboard setalah login via github
-                Intent i = new Intent(getApplicationContext(), Dashboard.class);
+                //Intent i = new Intent(getApplicationContext(), Dashboard.class);
+
+                //Intent direct to assignments
+                Intent i = new Intent(getApplicationContext(), Assignments.class);
                 startActivity(i);
                 finish();
             }

@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard" />
+        <activity android:name=".ui.activity.Assignments" />
 
     </application>
 

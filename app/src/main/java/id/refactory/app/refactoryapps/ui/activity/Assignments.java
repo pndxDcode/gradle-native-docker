@@ -16,7 +16,7 @@ import java.util.List;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
-import id.refactory.app.refactoryapps.api.request.RetrofitConnect;
+import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.api.request.services.RequestToken;
 import id.refactory.app.refactoryapps.models.AdapterAssignments;
 import id.refactory.app.refactoryapps.models.DataAssignments;
@@ -52,7 +52,7 @@ public class Assignments extends AppCompatActivity{
         RequestToken token = new RequestToken();
         String dataToken = token.getToken();
 
-        RetrofitConnect retro = new RetrofitConnect();
+        RetrofitConnection retro = new RetrofitConnection();
         Retrofit a = retro.initializeRetrofit();
 
         RetrofitAssignment apiservice = a.create(RetrofitAssignment.class);

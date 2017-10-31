@@ -21,7 +21,7 @@ import java.io.File;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
-import id.refactory.app.refactoryapps.api.request.RetrofitConnect;
+import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.api.request.services.RequestToken;
 import id.refactory.app.refactoryapps.models.UpdateAssignments;
 import okhttp3.MediaType;
@@ -129,7 +129,7 @@ public class DetailAssignments extends AppCompatActivity {
                 .addFormDataPart("result_attachments", file.getName(),requestBody)
                 .build();
 
-        RetrofitConnect retrofitConnect = new RetrofitConnect();
+        RetrofitConnection retrofitConnect = new RetrofitConnection();
         Retrofit retrofitInitial = retrofitConnect.initializeRetrofit();
 
 
