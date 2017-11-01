@@ -1,6 +1,5 @@
-package id.refactory.app.refactoryapps.api.request.services;
+package id.refactory.app.refactoryapps.api.services;
 
-import id.refactory.app.refactoryapps.api.request.services.AuthRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
