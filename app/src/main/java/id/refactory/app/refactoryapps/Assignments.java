@@ -1,6 +1,8 @@
-package id.refactory.app.refactoryapps.ui.activity;
+package id.refactory.app.refactoryapps;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,15 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
-import id.refactory.app.refactoryapps.api.request.services.RequestToken;
 import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.models.ResultAssignments;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +30,7 @@ public class Assignments extends AppCompatActivity{
     private AdapterAssignments mAdapter;
     List<DataAssignments> assignments;
     private RecyclerView.LayoutManager mLayoutManager;
+    SessionManager sessionManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +47,15 @@ public class Assignments extends AppCompatActivity{
     }
 
     private void loadDataAssignments(){
-        RequestToken token = new RequestToken();
-        String dataToken = token.getToken();
+
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getTokenDetails();
+
+        String storeToken = user.get(SessionManager.KEY_NAME);
+        String tokenType = "Bearer";
+
+        Log.d("yeah", "loadDataAssignments: "+tokenType);
+        String dataToken = tokenType+" "+storeToken;
 
         RetrofitConnection retro = new RetrofitConnection();
         Retrofit a = retro.initializeRetrofit();
