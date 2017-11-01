@@ -1,9 +1,10 @@
-package id.refactory.app.refactoryapps.api.services;
+package id.refactory.app.refactoryapps.api.request.services;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by prana on 18/10/17.
+ * Created by massam on 14/10/17.
  */
 
 public class AuthRequest {
@@ -114,6 +115,5 @@ public class AuthRequest {
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
     }
-
-
 }
+

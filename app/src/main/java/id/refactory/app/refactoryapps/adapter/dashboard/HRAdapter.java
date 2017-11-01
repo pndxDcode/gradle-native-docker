@@ -1,4 +1,4 @@
-package id.refactory.app.refactoryapps.theAdapter;
+package id.refactory.app.refactoryapps.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package id.refactory.app.refactoryapps.theAdapter;
+package id.refactory.app.refactoryapps.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,54 +12,49 @@ import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.Datum;
-//import id.refactory.app.refactoryapps.fragments.SOFFragment;
 
 /**
  * Created by prana on 16/10/17.
  */
 
-public class SOFAdapter extends RecyclerView.Adapter<SOFAdapter.ViewHolder> {
+public class WPMAdapter extends RecyclerView.Adapter<WPMAdapter.ViewHolder> {
 
     public Context konteks; // -> context, bisa di ganti inisialisasinya eq: konteks
     public ArrayList<Datum> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_status,tv_assignment, tv_link ;
+        private TextView tv_status,tv_assignmnet, tv_link ;
         private Button bt_report;
 
         public ViewHolder(View itemView) {
-
             super(itemView);
             tv_status = (TextView)itemView.findViewById(R.id.status);
-            tv_assignment = (TextView)itemView.findViewById(R.id.assignment);
+            tv_assignmnet = (TextView)itemView.findViewById(R.id.assignment);
             tv_link = (TextView)itemView.findViewById(R.id.link);
             bt_report = (Button)itemView.findViewById(R.id.bt_report);
         }
     }
 
+
     // /membuat konstruktor HRAdapter
-    public SOFAdapter(Context konteks, ArrayList<Datum> rappModAL) {
+    public WPMAdapter(Context konteks, ArrayList<Datum> rappModAL) {
         this.konteks = konteks;
         this.rappModAL = rappModAL;
     }
 
-    // ketika membuat public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder>
-    // maka automatis dengan alt+enter  mengenerate : ViewHolder onCreateViewHolder(), onBindViewHolder() dan getItemCount()
 
-
-    public SOFAdapter.ViewHolder onCreateViewHolder(ViewGroup v, int i) {
+    public WPMAdapter.ViewHolder onCreateViewHolder(ViewGroup v, int i) {
         View view = LayoutInflater.from(v.getContext()).inflate(R.layout.assignment_listview, v, false);
-        return new SOFAdapter.ViewHolder(view);
+        return new WPMAdapter.ViewHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(SOFAdapter.ViewHolder v3, int i) {
-        if(rappModAL.get(i).getAssignmentType().equals("Stackoverflow")) {
-            v3.tv_status.setText(rappModAL.get(i).getStatus());
-            v3.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
-            v3.tv_link.setText("" + rappModAL.get(i).getUrl());
+    public void onBindViewHolder(WPMAdapter.ViewHolder v0, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("WPM")) {
+            v0.tv_status.setText(rappModAL.get(i).getStatus());
+            v0.tv_assignmnet.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v0.tv_link.setText("" + rappModAL.get(i).getUrl());
         }
     }
 
