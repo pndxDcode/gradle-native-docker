@@ -1,12 +1,13 @@
-package id.refactory.app.refactoryapps.api.services;
+package id.refactory.app.refactoryapps.api.request.services;
 
+import id.refactory.app.refactoryapps.api.request.services.AuthRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
- * Created by prana on 18/10/17.
+ * Created by massam on 14/10/17.
  */
 
 public interface RegAPI {
@@ -16,4 +17,6 @@ public interface RegAPI {
     @POST("/oauth/token")
     Call<AuthRequest> setCode(@Body AuthRequest auth);
 
+
 }
+

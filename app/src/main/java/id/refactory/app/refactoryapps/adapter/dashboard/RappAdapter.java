@@ -1,8 +1,6 @@
-package id.refactory.app.refactoryapps.theAdapter;
+package id.refactory.app.refactoryapps.adapter;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,10 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.Datum;

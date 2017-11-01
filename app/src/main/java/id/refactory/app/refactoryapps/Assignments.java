@@ -1,15 +1,11 @@
 package id.refactory.app.refactoryapps.ui.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +14,9 @@ import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.api.request.services.RequestToken;
-import id.refactory.app.refactoryapps.models.AdapterAssignments;
+import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.models.ResultAssignments;
-import id.refactory.app.refactoryapps.models.UpdateAssignments;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
