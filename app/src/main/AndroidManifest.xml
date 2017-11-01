@@ -18,8 +18,6 @@
     <uses-feature
         android:name="android.hardware.camera.flash"
         android:required="false" />
-
-
     <application
         android:allowBackup="true"
         android:host="app.refactory.id"
@@ -30,20 +28,14 @@
         android:scheme="https"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.GitLogin">
+        <activity android:name=".GitLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard" />
-        <activity android:name=".ui.activity.Assignments" />
-
-        <activity android:name=".ui.activity.Dashboard" />
-        <!-- <activity android:name=".ui.activity.AdapterAssignmentsOld"></activity> -->
-        <activity android:name=".ui.activity.DetailAssignments"></activity>
-
+        <activity android:name=".Assignments" />
+        <activity android:name=".DetailAssignments"></activity>
     </application>
-
 </manifest>
