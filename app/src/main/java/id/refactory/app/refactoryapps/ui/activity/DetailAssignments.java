@@ -82,7 +82,6 @@ public class DetailAssignments extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openImageChooser();
                 requestPermission();
             }
         });
@@ -172,7 +171,7 @@ public class DetailAssignments extends AppCompatActivity {
             imageUri = data.getData();
             this.filePath = getRealPathFromURIPath(imageUri, this);
             this.file = new File(this.filePath);
-            img.setImageURI(imageUri);
+            this.img.setImageURI(imageUri);
 
         }else {
             Toast.makeText(DetailAssignments.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
