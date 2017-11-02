@@ -119,8 +119,7 @@ public class DetailAssignments extends AppCompatActivity {
         sessionManager = new SessionManager(getApplicationContext());
         HashMap<String, String> user = sessionManager.getTokenDetails();
 
-        String tokenId = user.get(SessionManager.KEY_NAME);
-        Log.d("yeah", "updateAssignment: "+tokenId);
+        String tokenId = "Bearer " + user.get(SessionManager.KEY_NAME);
 
         final Integer idAssignment = idAssign;
         final String resultsValue = valueUpdate;
@@ -142,6 +141,7 @@ public class DetailAssignments extends AppCompatActivity {
         call.enqueue(new Callback<UpdateAssignments>() {
             @Override
             public void onResponse(Call<UpdateAssignments> call, Response<UpdateAssignments> response) {
+                Log.d("Response", "onResponse: "+ response);
                 if(response.isSuccessful()){
                     showToast(response.body().getMessage());
                 }else{
