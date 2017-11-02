@@ -144,13 +144,13 @@ public class GitLogin extends AppCompatActivity {
                 MyDialog.dismiss();
 //
 //                // Intent Untuk masuk ke dashboard setalah login via github
-                Intent i = new Intent(getApplicationContext(), Dashboard.class);
+//                Intent i = new Intent(getApplicationContext(), Dashboard.class);
 
                 //Intent direct to assignments
-//                Intent i = new Intent(getApplicationContext(), Assignments.class);
+                Intent i = new Intent(getApplicationContext(), Assignments.class);
                 startActivity(i);
                 finish();
-            }git
+            }
 
             @Override
             public void onFailure(Call<AuthRequest> call, Throwable t) {
