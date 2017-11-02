@@ -13,7 +13,8 @@ import id.refactory.app.refactoryapps.fragments.HomeFragment;
 import id.refactory.app.refactoryapps.fragments.OSFragment;
 import id.refactory.app.refactoryapps.fragments.SOFFragment;
 import id.refactory.app.refactoryapps.fragments.WPMFragment;
-import id.refactory.app.refactoryapps.theAdapter.PagerAdapter;
+import id.refactory.app.refactoryapps.adapter.dashboard.PagerAdapter;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 
 public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener, WPMFragment.OnFragmentInteractionListener, HRFragment.OnFragmentInteractionListener, SOFFragment.OnFragmentInteractionListener, OSFragment.OnFragmentInteractionListener {
@@ -36,6 +37,7 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
 //        tabLayout.addTab(tabLayout.newTab().setText("OpenSource"));
 
         //set tab head tobe Icon
+
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_projects));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_wpm));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_hr));

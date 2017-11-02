@@ -1,28 +1,17 @@
-package id.refactory.app.refactoryapps.models;
+package id.refactory.app.refactoryapps.adapter.assignment;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.ui.activity.Assignments;
-import id.refactory.app.refactoryapps.ui.activity.DetailAssignments;
-
-import static android.R.attr.author;
-import static android.R.attr.text;
+import id.refactory.app.refactoryapps.models.DataAssignments;
+import id.refactory.app.refactoryapps.DetailAssignments;
 
 /**
  * Created by massam on 20/10/17.

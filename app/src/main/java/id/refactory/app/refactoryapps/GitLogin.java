@@ -12,11 +12,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-import id.refactory.app.refactoryapps.services.ApiClient;
-import id.refactory.app.refactoryapps.services.AuthRequest;
-import id.refactory.app.refactoryapps.services.RegAPI;
+import id.refactory.app.refactoryapps.api.services.ApiClient;
+import id.refactory.app.refactoryapps.api.services.AuthRequest;
+import id.refactory.app.refactoryapps.api.services.RegAPI;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 
-import id.refactory.app.refactoryapps.ui.activity.Assignments;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -145,6 +145,7 @@ public class GitLogin extends AppCompatActivity {
 
                 // Intent Untuk masuk ke dashboard setalah login via github
                 Intent i = new Intent(getApplicationContext(), Dashboard.class);
+
 
                 //Intent direct to assignments
                 //Intent i = new Intent(getApplicationContext(), Assignments.class);
