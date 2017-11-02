@@ -147,7 +147,9 @@ public class GitLogin extends AppCompatActivity {
 //                Intent i = new Intent(getApplicationContext(), Dashboard.class);
 
                 //Intent direct to assignments
-                Intent i = new Intent(getApplicationContext(), Assignments.class);
+//                Intent i = new Intent(getApplicationContext(), Assignments.class);
+
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
                 finish();
             }
