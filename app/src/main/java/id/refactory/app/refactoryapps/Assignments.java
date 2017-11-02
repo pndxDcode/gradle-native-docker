@@ -1,5 +1,6 @@
 package id.refactory.app.refactoryapps;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -100,7 +101,11 @@ public class Assignments extends AppCompatActivity{
         });
     }
 
-
+    public void onBackPressed(){
+        Intent view = new Intent(getApplication(),MainActivity.class);
+        startActivity(view);
+        finish();
+    }
 
 
 }
