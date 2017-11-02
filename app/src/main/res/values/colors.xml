@@ -8,6 +8,7 @@
     <color name="background">#efefef</color>
     <color name="textWhite">#FFFFFF</color>
     <color name="text">#000000</color>
+    <color name="tabcolor">#ffffff</color>
 
     <color name="btnLogin">#3c3c3c</color>
     <color name="textColor">#000000</color>
