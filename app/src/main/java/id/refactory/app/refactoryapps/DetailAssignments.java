@@ -1,4 +1,4 @@
-package id.refactory.app.refactoryapps.ui.activity;
+package id.refactory.app.refactoryapps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,12 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.HashMap;
 
-import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
-import id.refactory.app.refactoryapps.api.request.services.RequestToken;
 import id.refactory.app.refactoryapps.models.UpdateAssignments;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -42,6 +42,7 @@ public class DetailAssignments extends AppCompatActivity {
     private String valueUpdate;
     private File file;
     ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
 
     @Override
@@ -115,8 +116,10 @@ public class DetailAssignments extends AppCompatActivity {
     public void updateAssignment(){
         progressDialog.show();
 
-        RequestToken requestToken = new RequestToken();
-        String tokenId  = requestToken.getToken();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getTokenDetails();
+
+        String tokenId = "Bearer " + user.get(SessionManager.KEY_NAME);
 
         final Integer idAssignment = idAssign;
         final String resultsValue = valueUpdate;
@@ -138,8 +141,13 @@ public class DetailAssignments extends AppCompatActivity {
         call.enqueue(new Callback<UpdateAssignments>() {
             @Override
             public void onResponse(Call<UpdateAssignments> call, Response<UpdateAssignments> response) {
+                Log.d("Response", "onResponse: "+ response);
+                if(response.isSuccessful()){
+                    showToast(response.body().getMessage());
+                }else{
+                    showToast("Upload data error !");
+                }
 
-                showToast(response.body().getMessage());
                 progressDialog.dismiss();
 
             }
