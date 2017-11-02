@@ -1,4 +1,4 @@
-package id.refactory.app.refactoryapps.theAdapter;
+package id.refactory.app.refactoryapps.adapter.dashboard;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +12,13 @@ import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.Datum;
+//import id.refactory.app.refactoryapps.fragments.SOFFragment;
 
 /**
  * Created by prana on 16/10/17.
  */
 
-public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
+public class SOFAdapter extends RecyclerView.Adapter<SOFAdapter.ViewHolder> {
 
     public Context konteks; // -> context, bisa di ganti inisialisasinya eq: konteks
     public ArrayList<Datum> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
@@ -27,46 +28,43 @@ public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
         private TextView tv_status,tv_assignment, tv_link ;
         private Button bt_report;
 
-        //Konsturktor ini akan di automastis digenerate dengan alt+enter setelah membuat : public class ViewHolder extends RecyclerView.ViewHolder
-        public ViewHolder(View Itemview) {
-            super(Itemview);
-            tv_status = (TextView)Itemview.findViewById(R.id.status);
-            tv_assignment = (TextView)Itemview.findViewById(R.id.assignment);
-            tv_link = (TextView)Itemview.findViewById(R.id.link);
-            bt_report = (Button)Itemview.findViewById(R.id.bt_report);
+        public ViewHolder(View itemView) {
+
+            super(itemView);
+            tv_status = (TextView)itemView.findViewById(R.id.status);
+            tv_assignment = (TextView)itemView.findViewById(R.id.assignment);
+            tv_link = (TextView)itemView.findViewById(R.id.link);
+            bt_report = (Button)itemView.findViewById(R.id.bt_report);
         }
     }
 
-    //membuat konstruktor HRAdapter
-    public HRAdapter (Context konteks, ArrayList<Datum> rappModAL) {
+    // /membuat konstruktor HRAdapter
+    public SOFAdapter(Context konteks, ArrayList<Datum> rappModAL) {
         this.konteks = konteks;
         this.rappModAL = rappModAL;
     }
 
-
     // ketika membuat public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder>
     // maka automatis dengan alt+enter  mengenerate : ViewHolder onCreateViewHolder(), onBindViewHolder() dan getItemCount()
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup v, int i) {
+
+    public SOFAdapter.ViewHolder onCreateViewHolder(ViewGroup v, int i) {
         View view = LayoutInflater.from(v.getContext()).inflate(R.layout.assignment_listview, v, false);
-        return new HRAdapter.ViewHolder(view);
+        return new SOFAdapter.ViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(ViewHolder v2, int i) {
-        if(rappModAL.get(i).getAssignmentType().equals("Hacker Rank")) {
-            v2.tv_status.setText(rappModAL.get(i).getStatus());
-            v2.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
-            v2.tv_link.setText("" + rappModAL.get(i).getUrl());
-                }
+    public void onBindViewHolder(SOFAdapter.ViewHolder v3, int i) {
+        if(rappModAL.get(i).getAssignmentType().equals("Stackoverflow")) {
+            v3.tv_status.setText(rappModAL.get(i).getStatus());
+            v3.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
+            v3.tv_link.setText("" + rappModAL.get(i).getUrl());
+        }
     }
 
     @Override
     public int getItemCount() {
         return rappModAL.size();
     }
-
-
-
 }

@@ -18,7 +18,7 @@ import id.refactory.app.refactoryapps.api.models.Datum;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
-import id.refactory.app.refactoryapps.theAdapter.SOFAdapter;
+import id.refactory.app.refactoryapps.adapter.dashboard.SOFAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

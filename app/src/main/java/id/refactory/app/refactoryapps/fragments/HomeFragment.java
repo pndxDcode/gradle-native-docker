@@ -1,37 +1,26 @@
 package id.refactory.app.refactoryapps.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.SessionManager;
 import id.refactory.app.refactoryapps.api.models.Datum;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
-import id.refactory.app.refactoryapps.theAdapter.RappAdapter;
+import id.refactory.app.refactoryapps.adapter.dashboard.RappAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.widget.Toast.*;
 
 
 public class HomeFragment extends Fragment {

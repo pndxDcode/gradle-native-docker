@@ -1,4 +1,4 @@
-package id.refactory.app.refactoryapps.theAdapter;
+package id.refactory.app.refactoryapps.adapter.dashboard;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
