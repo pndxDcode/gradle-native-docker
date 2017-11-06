@@ -142,12 +142,13 @@ public class GitLogin extends AppCompatActivity {
                 session.createLogin(accessToken,expiresToken,refreshToken,tokenType);
 
                 MyDialog.dismiss();
-//
-//                // Intent Untuk masuk ke dashboard setalah login via github
-//                Intent i = new Intent(getApplicationContext(), Dashboard.class);
+
+                // Intent Untuk masuk ke dashboard setalah login via github
+                Intent i = new Intent(getApplicationContext(), Dashboard.class);
+
 
                 //Intent direct to assignments
-                Intent i = new Intent(getApplicationContext(), Assignments.class);
+                //Intent i = new Intent(getApplicationContext(), Assignments.class);
                 startActivity(i);
                 finish();
             }
