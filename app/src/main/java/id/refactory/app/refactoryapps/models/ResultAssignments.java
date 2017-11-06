@@ -1,6 +1,5 @@
 package id.refactory.app.refactoryapps.models;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
@@ -9,13 +8,10 @@ import java.util.ArrayList;
  */
 
 public class ResultAssignments {
-    @SerializedName("success")
     private String success;
 
-    @SerializedName("data")
-    private ArrayList<DataAssignments> dataResponse;
+    private ArrayList<DataAssignments> data;
 
-    @SerializedName("messages")
     private String message;
 
     public String getSuccess() {
@@ -26,12 +22,12 @@ public class ResultAssignments {
         this.success = success;
     }
 
-    public ArrayList<DataAssignments> getDataResponse() {
-        return dataResponse;
+    public ArrayList<DataAssignments> getData() {
+        return data;
     }
 
-    public void setDataResponse(ArrayList<DataAssignments> data) {
-        this.dataResponse = data;
+    public void setData(ArrayList<DataAssignments> data) {
+        this.data = data;
     }
 
     public String getMessage() {

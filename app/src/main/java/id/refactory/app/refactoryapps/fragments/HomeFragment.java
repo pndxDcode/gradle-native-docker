@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    private ArrayList<Datum> mDatalist;
+    private ArrayList<DataAssignment> mDatalist;
     private RappAdapter mDataAdapter;
 
     public HomeFragment() {
@@ -80,8 +80,8 @@ public class HomeFragment extends Fragment {
 
                 mDatalist = new ArrayList<>(rappMod.getData());
                 //Filter langusng Berdasarkan getAssignmetType = "Hacker Rank"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                for (DataAssignment data : mDatalist) {
                     if(data.getAssignmentType().toUpperCase().equals("PROJECT"))
                         result.add(data);
                 }

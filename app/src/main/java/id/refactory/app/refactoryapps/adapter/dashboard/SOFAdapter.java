@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 //import id.refactory.app.refactoryapps.fragments.SOFFragment;
 
 /**
@@ -21,7 +21,7 @@ import id.refactory.app.refactoryapps.api.models.Datum;
 public class SOFAdapter extends RecyclerView.Adapter<SOFAdapter.ViewHolder> {
 
     public Context konteks; // -> context, bisa di ganti inisialisasinya eq: konteks
-    public ArrayList<Datum> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
+    public ArrayList<DataAssignment> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -39,7 +39,7 @@ public class SOFAdapter extends RecyclerView.Adapter<SOFAdapter.ViewHolder> {
     }
 
     // /membuat konstruktor HRAdapter
-    public SOFAdapter(Context konteks, ArrayList<Datum> rappModAL) {
+    public SOFAdapter(Context konteks, ArrayList<DataAssignment> rappModAL) {
         this.konteks = konteks;
         this.rappModAL = rappModAL;
     }

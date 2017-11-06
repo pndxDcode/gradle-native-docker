@@ -37,7 +37,7 @@ public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.
 
         final AdapterAssignments.MyViewHolder holder = viewHolder;
 
-        final String project = assignments.get(position).getAssignment_type().toUpperCase();
+        final String project = assignments.get(position).getAssignmentType().toUpperCase();
         String projects = "PROJECT";
 
         if(project.matches(projects)){
@@ -49,7 +49,7 @@ public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.
         final String assign= assignments.get(position).getStatus();
         final Integer codeAssign = assignments.get(position).getId();
         final String linkAssignments = assignments.get(position).getTitle();
-        final String descryptionAssignments = assignments.get(position).getDescryption();
+        final String descryptionAssignments = assignments.get(position).getDescription();
         final String authorAssignments = assignments.get(position).getAuthor();
 
 

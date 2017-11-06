@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 
 /**
@@ -22,7 +22,7 @@ import id.refactory.app.refactoryapps.api.models.RappMod;
 public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 
     public Context context;
-    public ArrayList<Datum> rappModArrayList;
+    public ArrayList<DataAssignment> rappModArrayList;
     public ArrayList<RappMod> dataAssignments;
 
 
@@ -40,7 +40,7 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
     }
 
 
-    public RappAdapter(Context context, ArrayList<Datum> rappModArrayList) {
+    public RappAdapter(Context context, ArrayList<DataAssignment> rappModArrayList) {
         this.context = context;
         this.rappModArrayList = rappModArrayList;
     }
@@ -89,7 +89,7 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
     //getItemCount yang return jumlah dari item ke dalam data source
     @Override
     public int getItemCount() {
-//        ArrayList<Datum> filteredRappMod = new ArrayList<>();
+//        ArrayList<DataAssignment> filteredRappMod = new ArrayList<>();
         return this.rappModArrayList.size();
     }
 }
