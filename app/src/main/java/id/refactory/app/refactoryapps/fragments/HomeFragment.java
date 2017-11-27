@@ -88,7 +88,9 @@ public class HomeFragment extends Fragment {
                         result.add(data);
                 }
                 mDataAdapter= new RappAdapter(getActivity(), result);
-                recyclerView.setAdapter(mDataAdapter);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(mDataAdapter);
+                }
                 //Log.e("****",""+ rappMod.getData());g
             }
 

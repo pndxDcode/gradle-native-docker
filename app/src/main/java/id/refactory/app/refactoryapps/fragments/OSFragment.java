@@ -76,7 +76,9 @@ public class OSFragment extends Fragment {
                 }
                 mDataAdapter= new OSAdapter(getActivity(), result);
                 //mDataAdapter= new OSAdapter(getActivity(), mDatalist); // Diclose karena mDatalist diganti result
-                recyclerView.setAdapter(mDataAdapter);
+                if (recyclerView != null) {
+                    recyclerView.setAdapter(mDataAdapter);
+                }
                 //Log.e("****",""+ rappMod.getData());g
             }
 
