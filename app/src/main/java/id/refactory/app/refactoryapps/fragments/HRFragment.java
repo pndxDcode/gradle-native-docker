@@ -84,7 +84,9 @@ public class HRFragment extends Fragment {
                      }
                 mDataAdapter= new HRAdapter(getActivity(), result);
                 // //mDataAdapter= new HRAdapter(getActivity(), mDatalist); // Diclose karena mDatalist diganti result
-                recyclerView.setAdapter(mDataAdapter);
+                if(recyclerView != null){
+                    recyclerView.setAdapter(mDataAdapter);
+                }
                 //Log.e("****",""+ rappMod.getData());g
             }
 
