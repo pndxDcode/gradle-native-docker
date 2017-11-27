@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -24,8 +27,10 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
+    @BindView(R.id.listProject) RecyclerView recyclerView;
+    private Unbinder unbinder;
 
-    private ArrayList<Datum> mDatalist;
+    private ArrayList<DataAssignment> mDatalist;
     private RappAdapter mDataAdapter;
 
     public HomeFragment() {
@@ -36,12 +41,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Set Layout fragment, Ngaruh untuk menampilakan di layout2 fragment xml
         final View view =inflater.inflate(R.layout.fragment_home, container, false);
-
-        // untuk set data recyclerview listProject yang ada di file fragment_home
-        final RecyclerView recyclerView = view.findViewById(R.id.listProject);
+        unbinder = ButterKnife.bind(this, view);
 
         //Ref : http://www.glamvian.com/Lebih-dalam-tentang-RecyclerView/
         // LayoutManager yang menentukan colletion item ditampilkan dan LayoutManager menjadi bagian terpenting-
@@ -80,8 +82,8 @@ public class HomeFragment extends Fragment {
 
                 mDatalist = new ArrayList<>(rappMod.getData());
                 //Filter langusng Berdasarkan getAssignmetType = "Hacker Rank"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                for (DataAssignment data : mDatalist) {
                     if(data.getAssignmentType().toUpperCase().equals("PROJECT"))
                         result.add(data);
                 }
@@ -103,7 +105,13 @@ public class HomeFragment extends Fragment {
 
     }
 
-
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }

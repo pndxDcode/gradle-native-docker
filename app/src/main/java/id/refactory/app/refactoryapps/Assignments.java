@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
@@ -27,7 +29,7 @@ import retrofit2.Retrofit;
 
 public class Assignments extends AppCompatActivity{
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.assignment_numbers) RecyclerView recyclerView;
     private AdapterAssignments mAdapter;
     List<DataAssignments> assignments;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -36,11 +38,12 @@ public class Assignments extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignments);
+        ButterKnife.bind(this);
+
         initViews();
     }
 
     private void initViews(){
-        recyclerView = (RecyclerView)findViewById(R.id.assignment_numbers);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -71,12 +74,12 @@ public class Assignments extends AppCompatActivity{
                     assignments = new ArrayList<>();
                     ResultAssignments result = response.body();
 //                    Log.d("yeah", "onResponse: "+new Gson().toJson(result));
-                    assignments = result.getDataResponse();
+                    assignments = result.getData();
 
                     //Filter Project
                     ArrayList<DataAssignments> dataResults = new ArrayList<DataAssignments>();
                     for (DataAssignments data: assignments){
-                        if(data.getAssignment_type().toUpperCase().equals("PROJECT")){
+                        if(data.getAssignmentType().toUpperCase().equals("PROJECT")){
                             dataResults.add(data);
                         }
                     }

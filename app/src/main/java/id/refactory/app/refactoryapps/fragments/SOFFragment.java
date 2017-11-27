@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -30,9 +33,11 @@ import retrofit2.Response;
 public class SOFFragment extends Fragment {
 
     //================================================================
-    private ArrayList<Datum> mDatalist;
+    private ArrayList<DataAssignment> mDatalist;
     private SOFAdapter mDataAdapter;
     //================================================================
+    @BindView(R.id.listSOF) RecyclerView recyclerView;
+    private Unbinder unbinder;
 
     public SOFFragment() {
         // Required empty public constructor
@@ -41,10 +46,9 @@ public class SOFFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         //================================================================
         final View view =inflater.inflate(R.layout.fragment_sof, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.listSOF);
+        unbinder = ButterKnife.bind(this, view);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -67,8 +71,8 @@ public class SOFFragment extends Fragment {
 
                 mDatalist = new ArrayList<>(rappMod.getData());
                 //Filter langusng Berdasarkan getAssignmetType = "Stackoverflow"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                for (DataAssignment data : mDatalist) {
                     if(data.getAssignmentType().equals("Stackoverflow"))
                         result.add(data);
                 }
@@ -95,5 +99,12 @@ public class SOFFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }

@@ -2,67 +2,27 @@
 package id.refactory.app.refactoryapps.api.models;
 
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("id")
-    @Expose
     private Integer id;
-    @SerializedName("email")
-    @Expose
     private String email;
-    @SerializedName("permissions")
-    @Expose
     private List<Object> permissions = null;
-    @SerializedName("last_login")
-    @Expose
     private String lastLogin;
-    @SerializedName("first_name")
-    @Expose
     private String firstName;
-    @SerializedName("last_name")
-    @Expose
     private String lastName;
-    @SerializedName("username")
-    @Expose
     private String username;
-    @SerializedName("phone")
-    @Expose
     private String phone;
-    @SerializedName("created_at")
-    @Expose
     private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
     private String updatedAt;
-    @SerializedName("avatar")
-    @Expose
     private String avatar;
-    @SerializedName("author_image")
-    @Expose
     private Object authorImage;
-    @SerializedName("occupation")
-    @Expose
     private Object occupation;
-    @SerializedName("description")
-    @Expose
     private Object description;
-    @SerializedName("slack_id")
-    @Expose
     private String slackId;
-    @SerializedName("slack_username")
-    @Expose
     private String slackUsername;
-    @SerializedName("name")
-    @Expose
     private String name;
-    @SerializedName("gravatar")
-    @Expose
     private String gravatar;
-    @SerializedName("avatar_url")
-    @Expose
     private String avatarUrl;
 
     public Integer getId() {

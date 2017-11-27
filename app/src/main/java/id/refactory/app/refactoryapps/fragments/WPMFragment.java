@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -29,9 +32,11 @@ import retrofit2.Response;
 public class WPMFragment extends Fragment {
 
     //================================================================
-    private ArrayList<Datum> mDatalist;
+    private ArrayList<DataAssignment> mDatalist;
     private WPMAdapter mDataAdapter;
     //================================================================
+    @BindView(R.id.listWPM) RecyclerView recyclerView;
+    private Unbinder unbinder;
 
     public WPMFragment() {
         // Required empty public constructor
@@ -40,10 +45,9 @@ public class WPMFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         //================================================================
         final View view =inflater.inflate(R.layout.fragment_wpm, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.listWPM);
+        unbinder = ButterKnife.bind(this, view);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -66,8 +70,8 @@ public class WPMFragment extends Fragment {
 
                 mDatalist = new ArrayList<>(rappMod.getData());
                 //Filter langusng Berdasarkan getAssignmetType = "WPM"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                for (DataAssignment data : mDatalist) {
                     if(data.getAssignmentType().toUpperCase().equals("WPM"))
                         result.add(data);
                 }
@@ -97,5 +101,12 @@ public class WPMFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }

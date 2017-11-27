@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 
 /**
@@ -22,25 +24,24 @@ import id.refactory.app.refactoryapps.api.models.RappMod;
 public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
 
     public Context context;
-    public ArrayList<Datum> rappModArrayList;
+    public ArrayList<DataAssignment> rappModArrayList;
     public ArrayList<RappMod> dataAssignments;
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_status,tv_assignment, tv_link;
-        private Button bt_report;
+
+        @BindView(R.id.status) TextView tv_status;
+        @BindView(R.id.assignment) TextView tv_assignment;
+        @BindView(R.id.link) TextView tv_link;
+        @BindView(R.id.bt_report) Button bt_report;
 
         public ViewHolder(View view) {
             super(view);
-            tv_status = (TextView)view.findViewById(R.id.status);
-            tv_assignment = (TextView)view.findViewById(R.id.assignment);
-            tv_link = (TextView)view.findViewById(R.id.link);
-            bt_report = (Button) view.findViewById(R.id.bt_report);
+            ButterKnife.bind(this, view);
         }
     }
 
 
-    public RappAdapter(Context context, ArrayList<Datum> rappModArrayList) {
+    public RappAdapter(Context context, ArrayList<DataAssignment> rappModArrayList) {
         this.context = context;
         this.rappModArrayList = rappModArrayList;
     }
@@ -89,7 +90,7 @@ public class RappAdapter extends RecyclerView.Adapter<RappAdapter.ViewHolder> {
     //getItemCount yang return jumlah dari item ke dalam data source
     @Override
     public int getItemCount() {
-//        ArrayList<Datum> filteredRappMod = new ArrayList<>();
+//        ArrayList<DataAssignment> filteredRappMod = new ArrayList<>();
         return this.rappModArrayList.size();
     }
 }

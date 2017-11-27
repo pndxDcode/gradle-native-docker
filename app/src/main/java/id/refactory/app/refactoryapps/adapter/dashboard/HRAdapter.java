@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 
 /**
  * Created by prana on 16/10/17.
@@ -20,25 +22,24 @@ import id.refactory.app.refactoryapps.api.models.Datum;
 public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
 
     public Context konteks; // -> context, bisa di ganti inisialisasinya eq: konteks
-    public ArrayList<Datum> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
+    public ArrayList<DataAssignment> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_status,tv_assignment, tv_link ;
-        private Button bt_report;
+        @BindView(R.id.status) TextView tv_status;
+        @BindView(R.id.assignment) TextView tv_assignment;
+        @BindView(R.id.link) TextView tv_link;
+        @BindView(R.id.bt_report) Button bt_report;
 
         //Konsturktor ini akan di automastis digenerate dengan alt+enter setelah membuat : public class ViewHolder extends RecyclerView.ViewHolder
         public ViewHolder(View Itemview) {
             super(Itemview);
-            tv_status = (TextView)Itemview.findViewById(R.id.status);
-            tv_assignment = (TextView)Itemview.findViewById(R.id.assignment);
-            tv_link = (TextView)Itemview.findViewById(R.id.link);
-            bt_report = (Button)Itemview.findViewById(R.id.bt_report);
+            ButterKnife.bind(this, Itemview);
         }
     }
 
     //membuat konstruktor HRAdapter
-    public HRAdapter (Context konteks, ArrayList<Datum> rappModAL) {
+    public HRAdapter (Context konteks, ArrayList<DataAssignment> rappModAL) {
         this.konteks = konteks;
         this.rappModAL = rappModAL;
     }
@@ -59,7 +60,7 @@ public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
             v2.tv_status.setText(rappModAL.get(i).getStatus());
             v2.tv_assignment.setText(rappModAL.get(i).getAssignmentType() + " :");
             v2.tv_link.setText("" + rappModAL.get(i).getUrl());
-                }
+        }
     }
 
     @Override

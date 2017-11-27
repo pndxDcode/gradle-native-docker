@@ -12,9 +12,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.services.ApiClient;
 import id.refactory.app.refactoryapps.api.services.AuthRequest;
 import id.refactory.app.refactoryapps.api.services.RegAPI;
+import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 import retrofit2.Call;
@@ -23,10 +26,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static id.refactory.app.refactoryapps.api.services.RetrofitConnect.*;
+
 public class GitLogin extends AppCompatActivity {
 
     private Dialog MyDialog;
-    private Button webDialog;
+    @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
     LoadListener loadlistener = new LoadListener();
@@ -40,10 +45,10 @@ public class GitLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
         session = new SessionManager(getApplicationContext());
 
-        webDialog = ( Button ) findViewById(R.id.btn_login);
         webDialog.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -118,14 +123,11 @@ public class GitLogin extends AppCompatActivity {
         String client_secret = apiClient.getClientSecret();
         final String redirect_uri = apiClient.redirectUri();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        RetrofitConnect retrofitConnect = new RetrofitConnect();
 
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-        RegAPI api = retrofit.create(RegAPI.class);
+        RegAPI api = retrofitConnect.getClient().create(RegAPI.class);
     // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
@@ -133,7 +135,6 @@ public class GitLogin extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<AuthRequest> call, Response<AuthRequest> authRequest) {
-
                 String accessToken = authRequest.body().getAccessToken();
                 Integer expiresToken = authRequest.body().getExpiresIn();
                 String refreshToken = authRequest.body().getRefreshToken();
@@ -142,14 +143,12 @@ public class GitLogin extends AppCompatActivity {
                 session.createLogin(accessToken,expiresToken,refreshToken,tokenType);
 
                 MyDialog.dismiss();
-//
-//                // Intent Untuk masuk ke dashboard setalah login via github
-//                Intent i = new Intent(getApplicationContext(), Dashboard.class);
 
-                //Intent direct to assignments
-//                Intent i = new Intent(getApplicationContext(), Assignments.class);
+                // Intent Untuk masuk ke dashboard setalah login via github
+                //Intent i = new Intent(getApplicationContext(), Dashboard.class);
 
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+
                 startActivity(i);
                 finish();
             }
