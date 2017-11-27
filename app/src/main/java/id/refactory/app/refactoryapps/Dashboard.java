@@ -8,6 +8,8 @@ import android.util.Log;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.fragments.HRFragment;
 import id.refactory.app.refactoryapps.fragments.HomeFragment;
 import id.refactory.app.refactoryapps.fragments.OSFragment;
@@ -21,13 +23,14 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
 
     SessionManager session;
     private String berer;
+    @BindView(R.id.tablayout) TabLayout tabLayout;
+    @BindView(R.id.pager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        ButterKnife.bind(this);
 
         // For set tab head to be title
 //        tabLayout.addTab(tabLayout.newTab().setText("Project"));
@@ -45,8 +48,7 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_os));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        // tabLayout has been binded using Butter Knife
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

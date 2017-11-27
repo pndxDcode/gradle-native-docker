@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
@@ -27,7 +30,8 @@ import retrofit2.Response;
  */
 
 public class OSFragment extends Fragment {
-
+    @BindView(R.id.listOS) RecyclerView recyclerView;
+    private Unbinder unbinder;
     //================================================================
     private ArrayList<DataAssignment> mDatalist;
     private OSAdapter mDataAdapter;
@@ -42,7 +46,7 @@ public class OSFragment extends Fragment {
                              Bundle savedInstanceState) {
         //================================================================
         final View view =inflater.inflate(R.layout.fragment_os, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.listOS);
+        unbinder = ButterKnife.bind(this, view);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -93,5 +97,12 @@ public class OSFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }

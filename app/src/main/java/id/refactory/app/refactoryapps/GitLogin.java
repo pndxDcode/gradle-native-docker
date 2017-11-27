@@ -12,6 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.services.ApiClient;
 import id.refactory.app.refactoryapps.api.services.AuthRequest;
 import id.refactory.app.refactoryapps.api.services.RegAPI;
@@ -29,7 +31,7 @@ import static id.refactory.app.refactoryapps.api.services.RetrofitConnect.*;
 public class GitLogin extends AppCompatActivity {
 
     private Dialog MyDialog;
-    private Button webDialog;
+    @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
     LoadListener loadlistener = new LoadListener();
@@ -43,10 +45,10 @@ public class GitLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
         session = new SessionManager(getApplicationContext());
 
-        webDialog = ( Button ) findViewById(R.id.btn_login);
         webDialog.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

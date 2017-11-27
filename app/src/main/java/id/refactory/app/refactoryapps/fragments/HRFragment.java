@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
@@ -27,7 +30,8 @@ import retrofit2.Response;
  */
 
 public class HRFragment extends Fragment {
-
+    @BindView(R.id.listHR) RecyclerView recyclerView;
+    private Unbinder unbinder;
     // Prana 12 Okt 2017 ini untuk looping data dari DataAssignment.class
     private ArrayList<DataAssignment> mDatalist;
     private HRAdapter mDataAdapter;
@@ -39,11 +43,10 @@ public class HRFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 //        // Set Layout fragment
 //
         final View view =inflater.inflate(R.layout.fragment_hr, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.listHR);
+        unbinder = ButterKnife.bind(this, view);
 //
 //        // Set layout
 //
@@ -98,10 +101,14 @@ public class HRFragment extends Fragment {
         return view;
     }
 
-
-
-
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }
 

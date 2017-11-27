@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
 
@@ -24,16 +26,14 @@ public class OSAdapter extends RecyclerView.Adapter<OSAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_status,tv_assignment, tv_link ;
-        private Button bt_report;
-
+        @BindView(R.id.status) TextView tv_status;
+        @BindView(R.id.assignment) TextView tv_assignment;
+        @BindView(R.id.link) TextView tv_link;
+        @BindView(R.id.bt_report) Button bt_report;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_status = (TextView)itemView.findViewById(R.id.status);
-            tv_assignment = (TextView)itemView.findViewById(R.id.assignment);
-            tv_link = (TextView)itemView.findViewById(R.id.link);
-            bt_report = (Button)itemView.findViewById(R.id.bt_report);
+            ButterKnife.bind(this, itemView);
         }
     }
 

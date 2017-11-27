@@ -20,6 +20,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.models.UpdateAssignments;
@@ -35,7 +37,6 @@ import retrofit2.Retrofit;
 public class DetailAssignments extends AppCompatActivity {
     public final static int PICK_IMAGE_REQUEST = 100;
     private static final int REQUEST_WRITE_PERMISSION = 786;
-    ImageView img;
     private Uri imageUri;
     private String filePath;
     private Integer idAssign;
@@ -44,11 +45,20 @@ public class DetailAssignments extends AppCompatActivity {
     ProgressDialog progressDialog;
     SessionManager sessionManager;
 
+    @BindView(R.id.tv_id_assignment) TextView id;
+    @BindView(R.id.tv_status_assignment) TextView status;
+    @BindView(R.id.tv_link_assignment) TextView link;
+    @BindView(R.id.tv_descryption_assignment) TextView descryption;
+    @BindView(R.id.tv_author_assignment) TextView author;
+    @BindView(R.id.img_status) ImageView img;
+    @BindView(R.id.bt_update) Button button_update;
+    @BindView(R.id.editText_value) EditText textValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_assignments);
+        ButterKnife.bind(this);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Upload Data ...");
@@ -61,13 +71,6 @@ public class DetailAssignments extends AppCompatActivity {
             String descrptAssign = extras.getString("descryption");
             String authorAssign = extras.getString("author");
 
-
-            TextView id = (TextView) findViewById(R.id.tv_id_assignment);
-            TextView status = (TextView) findViewById(R.id.tv_status_assignment);
-            TextView link = ( TextView) findViewById(R.id.tv_link_assignment);
-            TextView descryption = ( TextView) findViewById(R.id.tv_descryption_assignment);
-            TextView author = ( TextView) findViewById(R.id.tv_author_assignment);
-
             id.setText("ID Assignment : "+idAssign);
             status.setText("Status : "+statusAssign);
             link.setText("Link : " + linkAssign);
@@ -75,10 +78,6 @@ public class DetailAssignments extends AppCompatActivity {
             author.setText("Author : "+authorAssign);
             this.idAssign = idAssign;
         }
-
-        img = (ImageView) findViewById(R.id.img_status);
-
-        final Button button_update = ( Button ) findViewById(R.id.bt_update);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +100,6 @@ public class DetailAssignments extends AppCompatActivity {
 
     public void getValue(){
 
-        EditText textValue= ( EditText ) findViewById(R.id.editText_value);
         String value = textValue.getText().toString();
 
         if (value == null){

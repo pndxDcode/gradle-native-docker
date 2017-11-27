@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
@@ -33,6 +36,8 @@ public class SOFFragment extends Fragment {
     private ArrayList<DataAssignment> mDatalist;
     private SOFAdapter mDataAdapter;
     //================================================================
+    @BindView(R.id.listSOF) RecyclerView recyclerView;
+    private Unbinder unbinder;
 
     public SOFFragment() {
         // Required empty public constructor
@@ -41,10 +46,9 @@ public class SOFFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         //================================================================
         final View view =inflater.inflate(R.layout.fragment_sof, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.listSOF);
+        unbinder = ButterKnife.bind(this, view);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -95,5 +99,12 @@ public class SOFFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // For binding reset in fragment lifecycle
+        unbinder.unbind();
     }
 }
