@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.DetailAssignments;
@@ -78,17 +80,15 @@ public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_project, tv_ticket, tv_link, tvstatus;
+        @BindView(R.id.tv_status) TextView tv_project;
+        @BindView(R.id.tv_code_tickets) TextView tv_ticket;
+        @BindView(R.id.tv_link_tickets) TextView tv_link;
 
         public MyViewHolder(View view){
             super(view);
+            ButterKnife.bind(this, view);
 
-            tv_project  = ( TextView ) view.findViewById(R.id.tv_status);
-            tv_ticket   = ( TextView ) view.findViewById(R.id.tv_code_tickets);
-            tv_link     = ( TextView ) view.findViewById(R.id.tv_link_tickets);
-
-            tvstatus = (TextView)view.findViewById(R.id.tv_status);
-
+            //tvstatus = (TextView)view.findViewById(R.id.tv_status);
         }
 
     }
