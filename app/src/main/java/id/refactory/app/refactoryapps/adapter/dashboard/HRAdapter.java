@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 
 /**
  * Created by prana on 16/10/17.
@@ -20,7 +20,7 @@ import id.refactory.app.refactoryapps.api.models.Datum;
 public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
 
     public Context konteks; // -> context, bisa di ganti inisialisasinya eq: konteks
-    public ArrayList<Datum> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
+    public ArrayList<DataAssignment> rappModAL; // -> rappModArrayList, bisa di ganti inisialisasinya eq: rappModAL
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -38,7 +38,7 @@ public class HRAdapter extends RecyclerView.Adapter<HRAdapter.ViewHolder> {
     }
 
     //membuat konstruktor HRAdapter
-    public HRAdapter (Context konteks, ArrayList<Datum> rappModAL) {
+    public HRAdapter (Context konteks, ArrayList<DataAssignment> rappModAL) {
         this.konteks = konteks;
         this.rappModAL = rappModAL;
     }

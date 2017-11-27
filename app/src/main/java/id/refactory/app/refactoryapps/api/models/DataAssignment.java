@@ -2,82 +2,32 @@
 package id.refactory.app.refactoryapps.api.models;
 
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+public class DataAssignment {
 
-    @SerializedName("id")
-    @Expose
     private Integer id;
-    @SerializedName("assignment_type")
-    @Expose
     private String assignmentType;
-    @SerializedName("title")
-    @Expose
     private String title;
-    @SerializedName("url")
-    @Expose
     private String url;
-    @SerializedName("description")
-    @Expose
     private String description;
-    @SerializedName("score")
-    @Expose
     private Integer score;
-    @SerializedName("closed_at")
-    @Expose
     private Object closedAt;
-    @SerializedName("created_at")
-    @Expose
     private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
     private String updatedAt;
-    @SerializedName("status")
-    @Expose
     private String status;
-    @SerializedName("user_id")
-    @Expose
     private Integer userId;
-    @SerializedName("result_value")
-    @Expose
     private String resultValue;
-    @SerializedName("result_attachments")
-    @Expose
     private String resultAttachments;
-    @SerializedName("result_json")
-    @Expose
     private Object resultJson;
-    @SerializedName("result_description")
-    @Expose
     private Object resultDescription;
-    @SerializedName("result_attachment")
-    @Expose
     private Object resultAttachment;
-    @SerializedName("eta")
-    @Expose
     private String eta;
-    @SerializedName("assignees")
-    @Expose
     private String assignees;
-    @SerializedName("related_curriculums")
-    @Expose
     private String relatedCurriculums;
-    @SerializedName("ticket_url")
-    @Expose
     private String ticketUrl;
-    @SerializedName("author")
-    @Expose
     private String author;
-    @SerializedName("is_overdue")
-    @Expose
     private Boolean isOverdue;
-    @SerializedName("curriculumItems")
-    @Expose
     private List<Object> curriculumItems = null;
-    @SerializedName("user")
-    @Expose
     private User user;
 
     public Integer getId() {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class SOFFragment extends Fragment {
 
     //================================================================
-    private ArrayList<Datum> mDatalist;
+    private ArrayList<DataAssignment> mDatalist;
     private SOFAdapter mDataAdapter;
     //================================================================
 
@@ -67,8 +67,8 @@ public class SOFFragment extends Fragment {
 
                 mDatalist = new ArrayList<>(rappMod.getData());
                 //Filter langusng Berdasarkan getAssignmetType = "Stackoverflow"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                for (DataAssignment data : mDatalist) {
                     if(data.getAssignmentType().equals("Stackoverflow"))
                         result.add(data);
                 }

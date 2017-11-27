@@ -70,12 +70,12 @@ public class Assignments extends AppCompatActivity{
                     assignments = new ArrayList<>();
                     ResultAssignments result = response.body();
 //                    Log.d("yeah", "onResponse: "+new Gson().toJson(result));
-                    assignments = result.getDataResponse();
+                    assignments = result.getData();
 
                     //Filter Project
                     ArrayList<DataAssignments> dataResults = new ArrayList<DataAssignments>();
                     for (DataAssignments data: assignments){
-                        if(data.getAssignment_type().toUpperCase().equals("PROJECT")){
+                        if(data.getAssignmentType().toUpperCase().equals("PROJECT")){
                             dataResults.add(data);
                         }
                     }

@@ -1,22 +1,12 @@
 
 package id.refactory.app.refactoryapps.api.models;
 
-import android.util.Log;
-
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class RappMod {
 
-    @SerializedName("success")
-    @Expose
     private Boolean success;
-    @SerializedName("data")
-    @Expose
-    private List<Datum> data = null;
-    @SerializedName("message")
-    @Expose
+    private List<DataAssignment> data = null;
     private String message;
 
     public Boolean getSuccess() {
@@ -27,11 +17,11 @@ public class RappMod {
         this.success = success;
     }
 
-    public List<Datum> getData() {
+    public List<DataAssignment> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<DataAssignment> data) {
         this.data = data;
     }
 

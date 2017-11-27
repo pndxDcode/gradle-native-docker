@@ -15,6 +15,7 @@ import android.widget.Button;
 import id.refactory.app.refactoryapps.api.services.ApiClient;
 import id.refactory.app.refactoryapps.api.services.AuthRequest;
 import id.refactory.app.refactoryapps.api.services.RegAPI;
+import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 import retrofit2.Call;
@@ -22,6 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static id.refactory.app.refactoryapps.api.services.RetrofitConnect.*;
 
 public class GitLogin extends AppCompatActivity {
 
@@ -118,14 +121,11 @@ public class GitLogin extends AppCompatActivity {
         String client_secret = apiClient.getClientSecret();
         final String redirect_uri = apiClient.redirectUri();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        RetrofitConnect retrofitConnect = new RetrofitConnect();
 
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-        RegAPI api = retrofit.create(RegAPI.class);
+        RegAPI api = retrofitConnect.getClient().create(RegAPI.class);
     // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
@@ -133,7 +133,6 @@ public class GitLogin extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<AuthRequest> call, Response<AuthRequest> authRequest) {
-
                 String accessToken = authRequest.body().getAccessToken();
                 Integer expiresToken = authRequest.body().getExpiresIn();
                 String refreshToken = authRequest.body().getRefreshToken();

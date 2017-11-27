@@ -1,38 +1,28 @@
 package id.refactory.app.refactoryapps.models;
 
-import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by massam on 14/10/17.
  */
 
 public class AuthRequest {
-    @SerializedName("code")
     private String code;
 
-    @SerializedName("grant_type")
     private String grantType;
 
-    @SerializedName("client_id")
     private String clientId;
 
-    @SerializedName("client_secret")
     private String clientSecret;
 
-    @SerializedName("redirect_uri")
     private String redirectUri;
 
 
-    @SerializedName("token_type")
     private String tokenType;
 
-    @SerializedName("expires_in")
     private Integer expiresIn;
 
-    @SerializedName("access_token")
     private String accessToken;
 
-    @SerializedName("refresh_token")
     private String refreshToken;
 
     public AuthRequest(String code, String grantType, String clientId, String clientSecret, String redirectUri) {

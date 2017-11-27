@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.api.models.Datum;
+import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
@@ -28,8 +28,8 @@ import retrofit2.Response;
 
 public class HRFragment extends Fragment {
 
-    // Prana 12 Okt 2017 ini untuk looping data dari Datum.class
-    private ArrayList<Datum> mDatalist;
+    // Prana 12 Okt 2017 ini untuk looping data dari DataAssignment.class
+    private ArrayList<DataAssignment> mDatalist;
     private HRAdapter mDataAdapter;
 
     public HRFragment() {
@@ -74,8 +74,8 @@ public class HRFragment extends Fragment {
                 mDatalist = new ArrayList<>(rappMod.getData());
 
                 //Filter langusng Berdasarkan getAssignmetType = "Hacker Rank"
-                ArrayList<Datum> result = new ArrayList<Datum>();
-                     for (Datum data : mDatalist) {
+                ArrayList<DataAssignment> result = new ArrayList<DataAssignment>();
+                     for (DataAssignment data : mDatalist) {
                         if(data.getAssignmentType().equals("Hacker Rank"))
                         result.add(data);
                      }
