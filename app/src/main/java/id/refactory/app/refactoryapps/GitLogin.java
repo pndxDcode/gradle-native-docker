@@ -145,11 +145,10 @@ public class GitLogin extends AppCompatActivity {
                 MyDialog.dismiss();
 
                 // Intent Untuk masuk ke dashboard setalah login via github
-                Intent i = new Intent(getApplicationContext(), Dashboard.class);
+                //Intent i = new Intent(getApplicationContext(), Dashboard.class);
 
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
 
-                //Intent direct to assignments
-                //Intent i = new Intent(getApplicationContext(), Assignments.class);
                 startActivity(i);
                 finish();
             }

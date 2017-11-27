@@ -210,5 +210,10 @@ public class DetailAssignments extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed(){
+        Intent view = new Intent(getApplication(),Assignments.class);
+        startActivity(view);
+        finish();
+    }
 
 }

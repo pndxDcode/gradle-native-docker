@@ -21,21 +21,25 @@
     <application
         android:allowBackup="true"
         android:host="app.refactory.id"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/refactory"
         android:label="@string/app_name"
         android:pathPrefix="/oauth/authorize"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/refactory"
         android:scheme="https"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GitLogin">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".Dashboard" />
         <activity android:name=".Assignments" />
-        <activity android:name=".DetailAssignments"></activity>
+        <activity android:name=".DetailAssignments"/>
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 </manifest>

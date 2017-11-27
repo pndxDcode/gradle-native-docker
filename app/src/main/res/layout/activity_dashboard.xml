@@ -38,8 +38,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/tablayout"
         android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/tabcolor"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp">
 
