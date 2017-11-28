@@ -19,6 +19,7 @@
         android:name="android.hardware.camera.flash"
         android:required="false" />
     <application
+        android:name=".RefactoryApplication"
         android:allowBackup="true"
         android:host="app.refactory.id"
         android:icon="@mipmap/refactory"

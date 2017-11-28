@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
-import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.models.ResultAssignments;
@@ -29,18 +30,23 @@ import retrofit2.Retrofit;
 
 public class Assignments extends AppCompatActivity{
 
+    @Inject Retrofit retrofit;
+
     @BindView(R.id.assignment_numbers) RecyclerView recyclerView;
     private AdapterAssignments mAdapter;
     List<DataAssignments> assignments;
     private RecyclerView.LayoutManager mLayoutManager;
     SessionManager sessionManager;
 
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignments);
         ButterKnife.bind(this);
-
+        RefactoryApplication.get(this).getApplicationComponent().inject(this);
         initViews();
+        //RefactoryApplication.get(this).getApplicationComponent().inject(this);
     }
 
     private void initViews(){
@@ -61,10 +67,7 @@ public class Assignments extends AppCompatActivity{
         Log.d("yeah", "loadDataAssignments: "+tokenType);
         String dataToken = tokenType+" "+storeToken;
 
-        RetrofitConnection retro = new RetrofitConnection();
-        Retrofit a = retro.initializeRetrofit();
-
-        RetrofitAssignment apiservice = a.create(RetrofitAssignment.class);
+        RetrofitAssignment apiservice = retrofit.create(RetrofitAssignment.class);
         Call<ResultAssignments> call = apiservice.listData(dataToken);
         call.enqueue(new Callback<ResultAssignments>() {
             @Override
