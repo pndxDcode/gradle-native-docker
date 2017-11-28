@@ -1,26 +1,34 @@
-package id.refactory.app.refactoryapps.api.services;
+package id.refactory.app.refactoryapps.dagger;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by prana on 09/10/17.
+ * Created by dhanialrizky on 28/11/17.
  */
 
-public class RetrofitConnect {
-
-    public static final String BASE_URL = "https://api.refactory.id";
-
+@Module(includes = ApplicationModule.class)
+public class MainModule {
+    private static final String BASE_URL = "https://api.refactory.id";
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient() {
-        Gson gson = new GsonBuilder()
+    @Provides
+    Gson provideGson() {
+        return new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
+    }
+
+    @Provides @Singleton
+    public Retrofit provideRetrofit(Gson gson) {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -28,6 +36,4 @@ public class RetrofitConnect {
                 .build();
         return retrofit;
     }
-
-
 }
