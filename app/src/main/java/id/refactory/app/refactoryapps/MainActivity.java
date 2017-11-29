@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         setContentView(R.layout.activity_main);
         setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
 
         //Set DrawerLayout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
