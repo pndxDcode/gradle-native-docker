@@ -39,7 +39,7 @@ public class OSFragment extends Fragment {
     private ArrayList<DataAssignment> mDatalist;
     private OSAdapter mDataAdapter;
     //================================================================
-    @Inject Retrofit retrofitConnect;
+    @Inject RappClient apiService;
 
     public OSFragment() {
         // Required empty public constructor
@@ -57,8 +57,6 @@ public class OSFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-
-        RappClient apiService = retrofitConnect.create(RappClient.class);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 

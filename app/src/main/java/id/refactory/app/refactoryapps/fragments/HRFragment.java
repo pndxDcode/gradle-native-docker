@@ -39,7 +39,7 @@ public class HRFragment extends Fragment {
     private ArrayList<DataAssignment> mDatalist;
     private HRAdapter mDataAdapter;
 
-    @Inject Retrofit retrofitConnect;
+    @Inject RappClient apiService;
 
     public HRFragment() {
         // Required empty public constructor
@@ -60,9 +60,6 @@ public class HRFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-
-//// connection api menggunakan Retrofit
-        RappClient apiService = retrofitConnect.create(RappClient.class);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 

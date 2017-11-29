@@ -32,12 +32,13 @@ public class GitLogin extends AppCompatActivity {
     @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
-    @Inject Retrofit retrofitConnect;
+    // RegAPI directly from Dagger
+    @Inject RegAPI api;
 
     LoadListener loadlistener = new LoadListener();
-    ApiClient api = new ApiClient();
 
-    String url = api.getUri();
+    ApiClient apiClient = new ApiClient();
+    String url = apiClient.getUri();
 
     SessionManager session;
 
@@ -115,11 +116,10 @@ public class GitLogin extends AppCompatActivity {
 
     public void getToken(String codeGet){
 
-        ApiClient get = new ApiClient();
         String code = codeGet;
 
-        ApiClient apiClient = new ApiClient();
-        String URL = apiClient.getURL();
+//        ApiClient apiClient = new ApiClient();
+//        String URL = apiClient.getURL();
         String grant_type = apiClient.getGrantType();
         String client_id = apiClient.getClient_id();
         String client_secret = apiClient.getClientSecret();
@@ -127,7 +127,6 @@ public class GitLogin extends AppCompatActivity {
 
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-        RegAPI api = retrofitConnect.create(RegAPI.class);
     // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 

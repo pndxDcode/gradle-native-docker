@@ -42,7 +42,7 @@ public class SOFFragment extends Fragment {
     @BindView(R.id.listSOF) RecyclerView recyclerView;
     private Unbinder unbinder;
 
-    @Inject Retrofit retrofitConnect;
+    @Inject RappClient apiService;
 
     public SOFFragment() {
         // Required empty public constructor
@@ -60,8 +60,6 @@ public class SOFFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-
-        RappClient apiService = retrofitConnect.create(RappClient.class);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 

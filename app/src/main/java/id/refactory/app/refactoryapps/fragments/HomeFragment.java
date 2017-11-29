@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<DataAssignment> mDatalist;
     private RappAdapter mDataAdapter;
 
-    @Inject Retrofit retrofitConnect;
+    @Inject RappClient apiService;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,9 +59,6 @@ public class HomeFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-
-        // connection api menggunakan Retrofit
-        RappClient apiService = retrofitConnect.create(RappClient.class);
 
 //        //Objek Dashboard untuk panggil token dari objek dashboard
 //        Dashboard dashboard = new Dashboard();

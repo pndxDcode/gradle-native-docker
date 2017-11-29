@@ -8,6 +8,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import id.refactory.app.refactoryapps.api.services.RappClient;
+import id.refactory.app.refactoryapps.api.services.RegAPI;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -35,5 +37,17 @@ public class MainModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;
+    }
+
+    @Provides
+    public RappClient provideRappClient(Retrofit retrofit) {
+        RappClient apiService = retrofit.create(RappClient.class);
+        return apiService;
+    }
+
+    @Provides
+    public RegAPI provideRegApi(Retrofit retrofit) {
+        RegAPI api = retrofit.create(RegAPI.class);
+        return api;
     }
 }

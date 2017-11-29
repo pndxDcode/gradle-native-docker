@@ -41,7 +41,7 @@ public class WPMFragment extends Fragment {
     @BindView(R.id.listWPM) RecyclerView recyclerView;
     private Unbinder unbinder;
 
-    @Inject Retrofit retrofitConnect;
+    @Inject RappClient apiService;
 
     public WPMFragment() {
         // Required empty public constructor
@@ -59,8 +59,6 @@ public class WPMFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-
-        RappClient apiService = retrofitConnect.create(RappClient.class);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 
