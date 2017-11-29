@@ -20,10 +20,11 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
-import id.refactory.app.refactoryapps.api.request.RetrofitConnection;
 import id.refactory.app.refactoryapps.models.UpdateAssignments;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 import okhttp3.MediaType;
@@ -44,6 +45,7 @@ public class DetailAssignments extends AppCompatActivity {
     private File file;
     ProgressDialog progressDialog;
     SessionManager sessionManager;
+    @Inject Retrofit retrofit;
 
     @BindView(R.id.tv_id_assignment) TextView id;
     @BindView(R.id.tv_status_assignment) TextView status;
@@ -59,7 +61,7 @@ public class DetailAssignments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_assignments);
         ButterKnife.bind(this);
-
+        RefactoryApplication.get(this).getApplicationComponent().inject(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Upload Data ...");
 
@@ -129,11 +131,7 @@ public class DetailAssignments extends AppCompatActivity {
                 .addFormDataPart("result_attachments", file.getName(),requestBody)
                 .build();
 
-        RetrofitConnection retrofitConnect = new RetrofitConnection();
-        Retrofit retrofitInitial = retrofitConnect.initializeRetrofit();
-
-
-        RetrofitAssignment apiservice = retrofitInitial.create(RetrofitAssignment.class);
+        RetrofitAssignment apiservice = retrofit.create(RetrofitAssignment.class);
         Call<UpdateAssignments> call = apiservice.updateData("multipart/form-data; boundary=" + resultsAssignment.boundary(),tokenId,idAssignment,resultsAssignment);
 
         call.enqueue(new Callback<UpdateAssignments>() {
